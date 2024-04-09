@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayfarer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: black;
+  color: white;
+  padding: 20px 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  margin: 0;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+}
+
+.main-content {
+  margin-top: 50px;
+}
+
+a{
+    text-decoration:none;
+}
+.post {
+  margin-bottom: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.post:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post h2 {
+  color: #333;
+}
+
+.post p {
+  color: #666;
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: black;
+  color: white;
+  bottom: 0;
+  margin-top: auto;
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">Wayfarer</h1>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="post-content">
+        <h2 id="post-title"></h2>
+        <p id="post-description"></p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Author: Joe Jackson<br>
+        <br> <a href="reso.html" id="moto">Resources</a>
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get('id');
+
+  // Sample data for demonstration
+  const posts = [
+    {
+      id: 'Journey-Journal-Sailing-from-Sydney-to-Fremantle',
+      title: 'Journey Journal: Sailing from Sydney to Fremantle',
+      description: 'On Tuesday, March 26th, our adventure began as we gathered in Sydney for an unforgettable voyage. Joined by loved ones from near and far, we embarked from the luxurious Sofitel Sydney, relishing in the anticipation of our upcoming journey. \n The evening unfolded with exquisite dining at the Atelier Restaurant Sofitel, followed by a delightful Happy Hour in the Champagne Bar, indulging in a range of fine champagnes and delectable charcuterie. \n\nThe following morning, amidst the bustling Circular Quay, we caught sight of our majestic vessel, the Resilient Lady. With excitement coursing through us, we boarded the ship and settled into our accommodations on Deck 14.\n\nAs we set sail, our days were filled with exploration and relaxation. From the charming town of Eden to the vibrant streets of Fremantle, each port offered its own unique charm and allure.\n\nOnboard, culinary delights awaited at the ship\'s array of restaurants, offering everything from steak and seafood to innovative culinary experiences at The Test Kitchen. With entertainment to suit every taste and ample opportunities for relaxation, our days at sea were nothing short of blissful.\n\nArriving in Fremantle on a sun-kissed afternoon, we savored the sights and flavors of this coastal gem before setting sail once more, bound for Mauritius.\n\nAs we continue our journey, we eagerly anticipate the adventures that lie ahead, knowing that each day brings new discoveries and cherished memories.'
+
+    },
+    {
+      id: 'Exploring-Tokyo-A-Journey-into-the-Heart-of-Japan',
+      title: 'Exploring Tokyo: A Journey into the Heart of Japan',
+      description:`
+**Tokyo: A Vibrant Journey into Modernity and Tradition**
+
+Tokyo, the bustling metropolis where neon lights dance alongside ancient temples, is a captivating destination for travelers. Whether you're a tech enthusiast, a foodie, or a culture seeker, Tokyo has something to offer. Let's explore this dynamic city together!
+
+## **1. The Urban Landscape**
+
+Tokyo's skyline is a mesmerizing blend of skyscrapers, futuristic architecture, and historic landmarks. From the iconic Tokyo Tower to the ultramodern Shibuya Crossing, every corner tells a story. Don't miss the panoramic views from the Tokyo Skytree – it's like standing on the edge of tomorrow.
+
+## **2. Culinary Adventures**
+
+Foodies rejoice! Tokyo boasts an unparalleled culinary scene. Savor delicate sushi at Tsukiji Fish Market, slurp ramen in tiny alleyway joints, and indulge in wagashi (traditional sweets) at tea houses. For a unique experience, try a themed café – from cat cafés to owl cafés, there's something for everyone.
+
+## **3. Tranquil Gardens**
+
+Escape the urban frenzy by visiting Tokyo's serene gardens. The Imperial Palace East Gardens offer a glimpse into Japan's imperial history, while Shinjuku Gyoen National Garden is a tranquil oasis in the heart of the city. Cherry blossoms in spring and vibrant foliage in autumn create magical landscapes.
+
+## **4. Harajuku and Akihabara**
+
+Harajuku is a fashionista's paradise. Takeshita Street buzzes with quirky boutiques, colorful street art, and Harajuku-style fashion. Nearby, Akihabara is the hub for anime, manga, and electronics. Explore multi-story arcades, find rare collectibles, and immerse yourself in otaku culture.
+
+## **5. Temples and Shrines**
+
+Discover Tokyo's spiritual side at historic temples and shrines. Senso-ji in Asakusa is Tokyo's oldest temple, while Meiji Shrine in Shibuya offers a serene forested escape. Participate in a traditional tea ceremony or write wishes on wooden ema plaques – a glimpse into Japan's rich heritage.
+
+## **6. Nightlife and Karaoke**
+
+As the sun sets, Tokyo transforms into a neon wonderland. Explore the vibrant nightlife in Roppongi, Shimokitazawa, or Golden Gai. Sing your heart out at a karaoke box – it's a quintessential Tokyo experience. Remember, the night is young, and the city never sleeps.
+
+## **7. Practical Tips**
+
+- **Transport**: Get a Suica card for seamless travel on trains and buses.
+- **Language**: Learn basic Japanese phrases – locals appreciate the effort.
+- **Etiquette**: Bow respectfully and remove your shoes when entering homes or temples.
+- **Safety**: Tokyo is incredibly safe, but stay vigilant in crowded areas.
+
+In Tokyo, tradition dances with innovation, creating a symphony of sights, sounds, and flavors. So pack your curiosity, embrace the unexpected, and let Tokyo weave its magic around you.
+
+# Sayonara, Tokyo! 🇯🇵✨
+`
+    }
+  ];
+
+  // Find the post with the matching ID
+  const post = posts.find(post => post.id === postId);
+
+  if( postId == "Journey-Journal-Sailing-from-Sydney-to-Fremantle"){
+    document.getElementById('moto').style.display = "block";
+  }
+  else{
+    document.getElementById('moto').style.display = "none";
+  }
+
+  if (post) {
+    // Update the title and description of the post
+    document.getElementById('post-title').textContent = post.title;
+    document.getElementById('post-description').textContent = post.description;
+  } else {
+    // Handle case where post ID is not found
+    document.getElementById('post-title').textContent = 'Post Not Found';
+    document.getElementById('post-description').textContent = 'Sorry, the requested post could not be found.';
+  }
+});
+  </script>
+  </body>
+  </html>

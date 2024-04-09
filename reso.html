@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            display: none;
+        }
+        a{
+            text-decoration: none;
+            color: Black;
+        }
+    </style>
+</head>
+<body>
+    <p id="p">Page Doesn't <a href="resos.html">Exist</a></p>
+    <script>
+        alert("You entering RESO");
+        setInterval(function () {document.getElementById('p').style.display = "block"; }, 4000);
+    </script>
+</body>
+</html>
